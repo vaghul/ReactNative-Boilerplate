@@ -1,0 +1,30 @@
+{
+        "expo": {
+                "name": "ReactNative-BoilerPlate",
+                "slug": "ReactNative-BoilerPlate",
+                "version": "1.0.0",
+                "orientation": "portrait",
+                "icon": "./app/assets/startup-icons/icon.png",
+                "splash": {
+                        "image": "./app/assets/startup-icons/splash.png",
+                        "resizeMode": "contain",
+                        "backgroundColor": "#ffffff"
+                },
+                "updates": {
+                        "fallbackToCacheTimeout": 0
+                },
+                "assetBundlePatterns": ["**/*"],
+                "ios": {
+                        "supportsTablet": true
+                },
+                "android": {
+                        "adaptiveIcon": {
+                                "foregroundImage": "./app/assets/startup-icons/adaptive-icon.png",
+                                "backgroundColor": "#FFFFFF"
+                        }
+                },
+                "web": {
+                        "favicon": "./app/assets/startup-icons/favicon.png"
+                }
+        }
+}
