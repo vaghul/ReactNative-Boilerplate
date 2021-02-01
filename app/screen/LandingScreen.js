@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, ImageBackground, StyleSheet, View, Text } from "react-native";
 import AppButton from "../components/AppButtons";
-import route from "../navigator/route";
+import route from "../config/route";
 
 const imageBackgroundSource = require("../assets/images/background.jpg");
 const logoSource = require("../assets/logo.png");

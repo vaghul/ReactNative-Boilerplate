@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -6,6 +6,11 @@ import * as yup from "yup";
 import AppButton from "../components/AppButtons";
 import AppInputText from "../components/AppInputText";
 import Screen from "../components/Screen";
+import useApi from "../hooks/useApi";
+import storeManager from "../utility/storeManager";
+import AppError from "../components/AppError";
+import loginApi from "../api/login";
+import AuthContext from "../context/AuthContext";
 
 const validationScheme = yup.object().shape({
         email: yup.string().required().email().label("Email"),
@@ -13,13 +18,22 @@ const validationScheme = yup.object().shape({
 });
 
 function LoginScreen(props) {
-        const onUserLogin = () => {};
+        let ApiLogin = useApi(loginApi.userlogin);
+        const { setuser } = useContext(AuthContext);
+        const onUserLogin = async (userinfo) => {
+                await ApiLogin.request(userinfo);
+                if (ApiLogin.error === false) {
+                        storeManager.storeSecureData("token", ApiLogin.data);
+                        setuser(ApiLogin.data);
+                        console.log(ApiLogin.data);
+                }
+        };
         return (
                 <Screen style={styles.container}>
-                        <Formik initialValues={{ email: "mosh@domain.com", password: "123456" }} onSubmit={onUserLogin} validationSchema={validationScheme}>
+                        <Formik initialValues={{ email: "mosh@domain.com", password: "12345" }} onSubmit={onUserLogin} validationSchema={validationScheme}>
                                 {({ handleSubmit }) => (
                                         <>
-                                                {/* {ApiLogin.error && <AppError content={ApiLogin.data.error} />} */}
+                                                {ApiLogin.error && <AppError content={ApiLogin.data.error} />}
                                                 <AppInputText
                                                         autoCapitalize="none"
                                                         autoCorrect={false}
