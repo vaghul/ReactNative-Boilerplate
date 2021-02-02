@@ -1,7 +1,7 @@
 import React from "react";
-import AppButton from "../components/AppButtons";
-import AppInputText from "../components/AppInputText";
-import Screen from "../components/Screen";
+import AppButton from "../../components/AppButtons";
+import AppInputText from "../../components/AppInputText";
+import Screen from "../../components/Screen";
 import { StyleSheet, View, TextInput, Button } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";

@@ -58,4 +58,5 @@ export default {
         getData,
         storeSecureData,
         getSecureData,
+        deleteSecureData,
 };

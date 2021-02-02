@@ -1,10 +1,10 @@
 import React from "react";
 import { Image, ImageBackground, StyleSheet, View, Text } from "react-native";
-import AppButton from "../components/AppButtons";
-import route from "../config/route";
+import AppButton from "../../components/AppButtons";
+import route from "../../config/route";
 
-const imageBackgroundSource = require("../assets/images/background.jpg");
-const logoSource = require("../assets/logo.png");
+const imageBackgroundSource = require("../../assets/images/background.jpg");
+const logoSource = require("../../assets/logo.png");
 function LandingScreen({ navigation }) {
         const handleLogin = () => {
                 navigation.navigate(route.LOGIN);

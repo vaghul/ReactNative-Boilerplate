@@ -1,8 +1,9 @@
 import { create } from "apisauce";
+import environment from "../config/environment";
 import storeManager from "../utility/storeManager";
 
 const apiClient = create({
-        baseURL: "http://192.168.2.16:9000/api/",
+        baseURL: environment.url,
 });
 
 apiClient.addAsyncRequestTransform(async (request) => {

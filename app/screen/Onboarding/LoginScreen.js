@@ -3,14 +3,14 @@ import { StyleSheet } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-import AppButton from "../components/AppButtons";
-import AppInputText from "../components/AppInputText";
-import Screen from "../components/Screen";
-import useApi from "../hooks/useApi";
-import storeManager from "../utility/storeManager";
-import AppError from "../components/AppError";
-import loginApi from "../api/login";
-import AuthContext from "../context/AuthContext";
+import AppButton from "../../components/AppButtons";
+import AppInputText from "../../components/AppInputText";
+import Screen from "../../components/Screen";
+import useApi from "../../hooks/useApi";
+import storeManager from "../../utility/storeManager";
+import AppError from "../../components/AppError";
+import loginApi from "../../api/login";
+import AuthContext from "../../context/AuthContext";
 
 const validationScheme = yup.object().shape({
         email: yup.string().required().email().label("Email"),
@@ -30,7 +30,7 @@ function LoginScreen(props) {
         };
         return (
                 <Screen style={styles.container}>
-                        <Formik initialValues={{ email: "mosh@domain.com", password: "12345" }} onSubmit={onUserLogin} validationSchema={validationScheme}>
+                        <Formik initialValues={{ email: "vaghul@domain.com", password: "12345" }} onSubmit={onUserLogin} validationSchema={validationScheme}>
                                 {({ handleSubmit }) => (
                                         <>
                                                 {ApiLogin.error && <AppError content={ApiLogin.data.error} />}
