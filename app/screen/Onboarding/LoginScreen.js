@@ -30,7 +30,7 @@ function LoginScreen(props) {
         };
         return (
                 <Screen style={styles.container}>
-                        <Formik initialValues={{ email: "vaghul@domain.com", password: "12345" }} onSubmit={onUserLogin} validationSchema={validationScheme}>
+                        <Formik initialValues={{ email: "mosh@domain.com", password: "12345" }} onSubmit={onUserLogin} validationSchema={validationScheme}>
                                 {({ handleSubmit }) => (
                                         <>
                                                 {ApiLogin.error && <AppError content={ApiLogin.data.error} />}
