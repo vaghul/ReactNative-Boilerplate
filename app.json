@@ -4,6 +4,7 @@
                 "slug": "ReactNative-BoilerPlate",
                 "version": "1.0.0",
                 "orientation": "portrait",
+                "scheme": "test",
                 "icon": "./app/assets/startup-icons/icon.png",
                 "splash": {
                         "image": "./app/assets/startup-icons/splash.png",

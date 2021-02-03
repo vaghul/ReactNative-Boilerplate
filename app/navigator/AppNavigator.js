@@ -5,15 +5,11 @@ import Tab1 from "../screen/Tabs/Tab1";
 import Tab2 from "../screen/Tabs/Tab2";
 import Tab3 from "../screen/Tabs/Tab3";
 import Tab4 from "../screen/Tabs/Tab4";
-import useNotifications from "../hooks/useNotifications";
 
 const Tab = createBottomTabNavigator();
-
 const AppNavigator = () => {
-        const { data } = useNotifications();
-        console.log("navigator", data);
         return (
-                <Tab.Navigator>
+                <Tab.Navigator tabBarOptions={{ safeAreaInsets: { bottom: 10 }, style: { height: 55 } }}>
                         <Tab.Screen name={route.TAB1} component={Tab1} />
                         <Tab.Screen name={route.TAB2} component={Tab2} />
                         <Tab.Screen name={route.TAB3} component={Tab3} />

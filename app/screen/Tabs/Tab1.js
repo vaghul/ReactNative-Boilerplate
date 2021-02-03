@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import useNotifications from "../../hooks/useNotifications";
 
-function Tab1(props) {
+function Tab1() {
+        useNotifications();
         return (
                 <View style={styles.container}>
                         <Text>Tab 1</Text>

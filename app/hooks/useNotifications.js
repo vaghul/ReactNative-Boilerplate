@@ -1,30 +1,31 @@
 import { useEffect, useRef, useState } from "react";
 import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
+import { useLinkTo } from "@react-navigation/native";
 
 import syncTokenApi from "../api/syncToken";
 import storeManager from "../utility/storeManager";
 
-export default useNotifications = (notificationListener) => {
+const modelNotificationData = (request) => {
+        console.log(request);
+        let obj = {
+                id: request.identifier,
+                title: request.content.title,
+                subtitle: request.content.subtitle,
+                data: request.content.data,
+        };
+        if (obj.data.__displayInForeground) {
+                delete obj.data.__displayInForeground;
+        }
+        return obj;
+};
+
+export default useNotifications = () => {
         const responseListener = useRef();
         const [data, setdata] = useState(null);
-        const handleNotification = (notification) => {
-                if (notification) {
-                        let obj = {
-                                id: notification.notification.request.identifier,
-                                title: notification.notification.request.content.title,
-                                subtitle: notification.notification.request.content.subtitle,
-                                data: notification.notification.request.content.data,
-                        };
-                        if (obj.data.__displayInForeground) {
-                                delete obj.data.__displayInForeground;
-                        }
-                        if (data.id !== obj.id) {
-                                setdata(obj);
-                        }
-                }
-        };
+        const linkto = useLinkTo();
 
+        // first time persmission and also adding a listner when the notification is recieved
         useEffect(() => {
                 registerForPushNotifications();
                 responseListener.current = Notifications.addNotificationResponseReceivedListener(handleNotification);
@@ -34,6 +35,27 @@ export default useNotifications = (notificationListener) => {
                         }
                 };
         }, []);
+
+        // On Recieving Notification
+        const handleNotification = ({ notification }) => {
+                if (notification) {
+                        let obj = modelNotificationData(notification.request);
+                        if (data === null || data.id !== obj.id) {
+                                setdata(obj);
+                        }
+                }
+        };
+
+        useEffect(() => {
+                if (data && data.data.url) {
+                        console.log(data.data.url);
+                        try {
+                                linkto(data.data.url);
+                        } catch (error) {
+                                console.log(error);
+                        }
+                }
+        }, [data]);
 
         const registerForPushNotifications = async () => {
                 try {
@@ -52,5 +74,4 @@ export default useNotifications = (notificationListener) => {
                         console.log("Error getting a push token", error);
                 }
         };
-        return { data };
 };
