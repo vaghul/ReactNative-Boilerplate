@@ -1,12 +1,11 @@
 import React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
-import route from "../../config/route";
+import { Button, StatusBar, StyleSheet, Text, View } from "react-native";
 
-function Tab2({ navigation }) {
+function ModalScreen({ navigation }) {
         return (
                 <View style={styles.container}>
-                        <Text>Tab 2</Text>
-                        <Button title={"open modal"} onPress={() => navigation.navigate(route.MODAL)} />
+                        <Button title={"close"} onPress={() => navigation.goBack()} />
+                        <StatusBar barStyle="light-content" />
                 </View>
         );
 }
@@ -19,4 +18,4 @@ const styles = StyleSheet.create({
         },
 });
 
-export default Tab2;
+export default ModalScreen;

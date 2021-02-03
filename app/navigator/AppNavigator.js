@@ -1,20 +1,16 @@
 import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
 import route from "../config/route";
-import Tab1 from "../screen/Tabs/Tab1";
-import Tab2 from "../screen/Tabs/Tab2";
-import Tab3 from "../screen/Tabs/Tab3";
-import Tab4 from "../screen/Tabs/Tab4";
+import ModalScreen from "../screen/ModalScreen";
+import TabNavigator from "./TabNavigator";
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 const AppNavigator = () => {
         return (
-                <Tab.Navigator tabBarOptions={{ safeAreaInsets: { bottom: 10 }, style: { height: 55 } }}>
-                        <Tab.Screen name={route.TAB1} component={Tab1} />
-                        <Tab.Screen name={route.TAB2} component={Tab2} />
-                        <Tab.Screen name={route.TAB3} component={Tab3} />
-                        <Tab.Screen name={route.TAB4} component={Tab4} />
-                </Tab.Navigator>
+                <Stack.Navigator screenOptions={{ headerShown: false, cardOverlayEnabled: true, ...TransitionPresets.ModalPresentationIOS }}>
+                        <Stack.Screen name="Tab" component={TabNavigator} />
+                        <Stack.Screen name={route.MODAL} component={ModalScreen} />
+                </Stack.Navigator>
         );
 };
 

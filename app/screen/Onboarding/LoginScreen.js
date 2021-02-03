@@ -29,25 +29,34 @@ function LoginScreen(props) {
                 }
         };
         return (
-                <Screen style={styles.container}>
-                        <Formik initialValues={{ email: "mosh@domain.com", password: "12345" }} onSubmit={onUserLogin} validationSchema={validationScheme}>
-                                {({ handleSubmit }) => (
-                                        <>
-                                                {ApiLogin.error && <AppError content={ApiLogin.data.error} />}
-                                                <AppInputText
-                                                        autoCapitalize="none"
-                                                        autoCorrect={false}
-                                                        icon="email"
-                                                        keyboardType="email-address"
-                                                        placeholder="Email"
-                                                        name="email"
-                                                />
-                                                <AppInputText autoCapitalize="none" autoCorrect={false} icon="lock" secureTextEntry placeholder="Password" name="password" />
-                                                <AppButton title="Login" onPress={handleSubmit} />
-                                        </>
-                                )}
-                        </Formik>
-                </Screen>
+                <>
+                        <Screen style={styles.container}>
+                                <Formik initialValues={{ email: "mosh@domain.com", password: "12345" }} onSubmit={onUserLogin} validationSchema={validationScheme}>
+                                        {({ handleSubmit }) => (
+                                                <>
+                                                        {ApiLogin.error && <AppError content={ApiLogin.data.error} />}
+                                                        <AppInputText
+                                                                autoCapitalize="none"
+                                                                autoCorrect={false}
+                                                                icon="email"
+                                                                keyboardType="email-address"
+                                                                placeholder="Email"
+                                                                name="email"
+                                                        />
+                                                        <AppInputText
+                                                                autoCapitalize="none"
+                                                                autoCorrect={false}
+                                                                icon="lock"
+                                                                secureTextEntry
+                                                                placeholder="Password"
+                                                                name="password"
+                                                        />
+                                                        <AppButton title="Login" onPress={handleSubmit} />
+                                                </>
+                                        )}
+                                </Formik>
+                        </Screen>
+                </>
         );
 }
 

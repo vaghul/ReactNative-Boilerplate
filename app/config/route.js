@@ -6,4 +6,5 @@ export default Object.freeze({
         TAB2: "TAB2",
         TAB3: "TAB3",
         TAB4: "TAB4",
+        MODAL: "MODAL",
 });
