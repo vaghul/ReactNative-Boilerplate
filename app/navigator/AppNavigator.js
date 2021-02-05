@@ -4,9 +4,16 @@ import route from "../config/route";
 import ModalScreen from "../screen/ModalScreen";
 import TabNavigator from "./TabNavigator";
 import { Button } from "react-native";
+import useLocation from "../hooks/useLocation";
+import useNotifications from "../hooks/useNotifications";
 
 const Stack = createStackNavigator();
 const AppNavigator = () => {
+        useNotifications();
+        const location = useLocation();
+        if (location) {
+                console.log("MEOW location", location);
+        }
         return (
                 <Stack.Navigator
                         mode="modal"
