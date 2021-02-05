@@ -10,10 +10,6 @@ import useNotifications from "../hooks/useNotifications";
 const Stack = createStackNavigator();
 const AppNavigator = () => {
         useNotifications();
-        const location = useLocation();
-        if (location) {
-                console.log("MEOW location", location);
-        }
         return (
                 <Stack.Navigator
                         mode="modal"

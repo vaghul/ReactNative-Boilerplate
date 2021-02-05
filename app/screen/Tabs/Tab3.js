@@ -1,10 +1,26 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useRef } from "react";
+import { StyleSheet, View, Dimensions } from "react-native";
+import MapView from "react-native-maps";
+import useLocation from "../../hooks/useLocation";
 
 function Tab3(props) {
+        const location = useLocation();
+        const mapRef = useRef();
+
+        if (location) {
+                mapRef.current.animateToRegion(
+                        {
+                                latitude: parseFloat(location.latitude),
+                                longitude: parseFloat(location.longitude),
+                                latitudeDelta: 0.05,
+                                longitudeDelta: 0.01,
+                        },
+                        1000
+                );
+        }
         return (
                 <View style={styles.container}>
-                        <Text>Tab 3</Text>
+                        <MapView showsUserLocation loadingEnabled ref={mapRef} style={styles.mapcontainer}></MapView>
                 </View>
         );
 }
@@ -14,6 +30,10 @@ const styles = StyleSheet.create({
                 flex: 1,
                 justifyContent: "center",
                 alignItems: "center",
+        },
+        mapcontainer: {
+                width: "100%",
+                height: "100%",
         },
 });
 
