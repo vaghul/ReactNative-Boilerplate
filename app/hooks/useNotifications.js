@@ -31,7 +31,7 @@ export default useNotifications = () => {
                 responseListener.current = Notifications.addNotificationResponseReceivedListener(handleNotification);
                 return () => {
                         if (responseListener.current) {
-                                Notifications.removeNotificationSubscription(responseListener.current);
+                                //        Notifications.removeNotificationSubscription(responseListener.current);
                         }
                 };
         }, []);

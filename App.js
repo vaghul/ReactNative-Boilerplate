@@ -17,10 +17,14 @@ const linking = {
         prefixes: [prefix],
         config: {
                 screens: {
-                        TAB4: {
-                                path: "tab4/:id",
-                                parse: {
-                                        id: (id) => `${id}`,
+                        TAB: {
+                                screens: {
+                                        TAB4: {
+                                                path: "tab4/:id",
+                                                parse: {
+                                                        id: (id) => `${id}`,
+                                                },
+                                        },
                                 },
                         },
                 },
