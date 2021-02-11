@@ -12,7 +12,7 @@ function Screen({ style, children, statusTheme = "dark-content" }) {
 
 const styles = StyleSheet.create({
         screen: {
-                marginTop: StatusBar.currentHeight,
+                marginTop: StatusBar.currentHeight || 0,
                 flex: 1,
         },
 });
