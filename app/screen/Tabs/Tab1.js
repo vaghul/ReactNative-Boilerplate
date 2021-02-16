@@ -3,6 +3,8 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import { useState } from "react/cjs/react.development";
 
 import ComponentScreen from "../../components/Screen";
+import useLifeCycle from "../../hooks/useLifeCycle";
+
 let values = [
         {
                 id: "1",
@@ -105,6 +107,8 @@ const itemSeperator = () => (
 const Tab1 = () => {
         const [resetList, setresetlist] = useState(false);
         const [refreshList, setrefreshlist] = useState(false);
+        const test = useLifeCycle();
+        console.log("lifecycle", test);
         const LoadMoreValues = () => {
                 let num = `${values.length + 1}`;
                 if (num < 100) {
